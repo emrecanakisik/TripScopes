@@ -1,29 +1,33 @@
-//
-//  LoginViewController.swift
-//  tripscopes
-//
-//  Created by Emre Can Akisik on 18/12/2025.
-//
-
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    private let mainView = LoginView()
+    
+    override func loadView() {
+        self.view = mainView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        SetupActions()
+        self.navigationItem.hidesBackButton = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func AnonymousNavigationButton(){
+        let vc = CreateAnonymousUserViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
-    */
-
+    @objc private func LoginNavigationButton(){
+        let vc = SignInViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func SetupActions(){
+        let buttonGroup = Dictionary(grouping: mainView.loginButtonStackView.buttons){ $0.isAnonymous }
+        
+        buttonGroup[true]?.forEach{ $0.addTarget(self, action: #selector(AnonymousNavigationButton), for: .touchUpInside) }
+        buttonGroup[false]?.forEach{ $0.addTarget(self, action: #selector(LoginNavigationButton), for: .touchUpInside) }
+        
+    }
 }
