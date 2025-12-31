@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func AnonymousNavigationButton(){
-        let vc = CreateAnonymousUserViewController()
+        let vc = LoginAnonymousViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     @objc private func LoginNavigationButton(){

@@ -2,12 +2,12 @@ import SwiftUI
 
 struct ViewControllerPreview: UIViewControllerRepresentable {
 
-    func makeUIViewController(context: Context) -> LoginViewController {
-        return LoginViewController()
+    func makeUIViewController(context: Context) -> LoginAnonymousViewController {
+        return LoginAnonymousViewController()
     }
 
-    func updateUIViewController(_ uiViewController: LoginViewController, context: Context) {
-        // Preview update burada olur. Genelde boş bırakırız.
+    func updateUIViewController(_ uiViewController: LoginAnonymousViewController, context: Context) {
+        
     }
 }
 
