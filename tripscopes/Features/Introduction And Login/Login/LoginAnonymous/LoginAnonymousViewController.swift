@@ -22,10 +22,15 @@ class LoginAnonymousViewController: UIViewController {
     }
 
     private func SetupActions(){
-        let buttonGroup = Dictionary(grouping: mainView.anonymousLoginButtonStackView.buttons){ $0.isCreated }
+//        let buttonGroup = Dictionary(grouping: mainView.anonymousLoginButtonStackView.buttons){ $0.isCreated }
+//        
+//        buttonGroup[true]?.forEach{ $0.addTarget(self, action: #selector(AnonymousLogin), for: .touchUpInside) }
+//        buttonGroup[false]?.forEach{ $0.addTarget(self, action: #selector(CreateAnonymousSession), for: .touchUpInside) }
         
-        buttonGroup[true]?.forEach{ $0.addTarget(self, action: #selector(AnonymousLogin), for: .touchUpInside) }
-        buttonGroup[false]?.forEach{ $0.addTarget(self, action: #selector(CreateAnonymousSession), for: .touchUpInside) }
+        let actionButtons = mainView.anonymousLoginButtonsView
+        
+        actionButtons.continueButton.addTarget(self, action: #selector(AnonymousLogin), for: .touchUpInside)
+        actionButtons.createAccountButton.addTarget(self, action: #selector(CreateAnonymousSession), for: .touchUpInside)
         
     }
     

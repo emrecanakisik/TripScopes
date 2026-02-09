@@ -4,7 +4,8 @@ import SnapKit
 class LoginAnonymousView: UIView {
 //ELEMENTS
     let enterUIDView = EnterUIDView()
-    let anonymousLoginButtonStackView = AnonymousLoginButtonStackView()
+//    let anonymousLoginButtonStackView = AnonymousLoginButtonStackView()
+    let anonymousLoginButtonsView = SignInViewButtons(isAnonymous: true)
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "lock.shield.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 40, weight: .bold, scale: .large))
@@ -61,7 +62,7 @@ class LoginAnonymousView: UIView {
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(enterUIDView)
-        addSubview(anonymousLoginButtonStackView)
+        addSubview(anonymousLoginButtonsView)
         
         imageView.snp.makeConstraints{make in
             make.top.equalToSuperview().inset(100)
@@ -81,9 +82,10 @@ class LoginAnonymousView: UIView {
             make.top.equalTo(subtitleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(30)
         }
-        anonymousLoginButtonStackView.snp.makeConstraints{make in
+        anonymousLoginButtonsView.snp.makeConstraints{make in
             make.top.equalTo(enterUIDView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(100)
         }
     }
 }

@@ -1,5 +1,11 @@
 import UIKit
 
+struct Colors{
+    static let dark = "#0F0F12"
+    static let darkGray = "#1A1A1E"
+    static let gray = "#4d4d59"
+    static let lightGray = ""
+}
 extension UIColor {
    convenience init(hex: String) {
        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)

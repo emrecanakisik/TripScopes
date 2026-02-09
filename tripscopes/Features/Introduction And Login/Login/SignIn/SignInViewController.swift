@@ -1,18 +1,32 @@
-//
-//  SignInViewController.swift
-//  tripscopes
-//
-//  Created by Emre Can Akisik on 27/12/2025.
-//
-
 import UIKit
 
 class SignInViewController: UIViewController {
+    let mainView = SignInView()
+    
+    override func loadView() {
+        self.view = mainView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .magenta
+        SetupActions()
     }
     
+    @objc private func NavigateToSignUp() {
+        navigationController?.pushViewController(SignUpViewController(), animated: true)
+        print("NavigateToSignUp")
+    }
+    
+    @objc private func NavigateToHome() {
+        print("NavigateToHome")
+
+    }
+    
+    private func SetupActions(){
+        let actionButtons = mainView.signInButton
+        
+        actionButtons.continueButton.addTarget(self, action: #selector(NavigateToHome), for: .touchUpInside)
+        actionButtons.createAccountButton.addTarget(self, action: #selector(NavigateToSignUp), for: .touchUpInside)
+    }
 
 }

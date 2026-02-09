@@ -2,11 +2,11 @@ import SwiftUI
 
 struct ViewControllerPreview: UIViewControllerRepresentable {
 
-    func makeUIViewController(context: Context) -> LoginAnonymousViewController {
-        return LoginAnonymousViewController()
+    func makeUIViewController(context: Context) -> SignInViewController {
+        return SignInViewController()
     }
 
-    func updateUIViewController(_ uiViewController: LoginAnonymousViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: SignInViewController, context: Context) {
         
     }
 }
