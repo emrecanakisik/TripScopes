@@ -30,9 +30,10 @@ class MainTabBarController: UITabBarController {
     
     private func CreateNavigations(with rootVC: UIViewController, title: String, image: UIImage) -> UINavigationController{
         let nav = UINavigationController(rootViewController: rootVC)
+        nav.isNavigationBarHidden = true
         nav.tabBarItem.title = title
         nav.tabBarItem.image = image
-        rootVC.navigationItem.title = title
+//        rootVC.navigationItem.title = title
         return nav
     }
     
