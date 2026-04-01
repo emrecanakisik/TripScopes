@@ -12,6 +12,13 @@ import SnapKit
 class PageTitleView: UIView {
 
 //ELEMENTS
+    lazy var labelView: UIView = {
+       let view = UIView()
+        view.layer.borderWidth = 5
+        view.layer.borderColor = UIColor.red.cgColor
+        return view
+    }()
+    
     lazy var label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
@@ -34,11 +41,17 @@ class PageTitleView: UIView {
     
 //UI SETUP
     private func SetupUI() {
-        addSubview(label)
+        addSubview(labelView)
+        labelView.addSubview(label)
         label.text = title
         
-        label.snp.makeConstraints {make in
+        labelView.snp.makeConstraints {make in
             make.edges.equalToSuperview()
+        }
+        
+        label.snp.makeConstraints {make in
+            //make.edges.equalToSuperview()
+            make.leading.top.bottom.equalToSuperview().inset(20)
         }
     }
     
