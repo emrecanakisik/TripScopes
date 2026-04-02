@@ -12,7 +12,7 @@ class BookingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CommonTitleView(title: "Bookings")
+        let pageTitle = CommonTitleView(title: "Bookings")
     }
     
 

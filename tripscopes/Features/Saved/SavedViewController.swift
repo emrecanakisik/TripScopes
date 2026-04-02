@@ -12,7 +12,7 @@ class SavedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CommonTitleView(title: "Saved")
+        let pageTitle = CommonTitleView(title: "Saved")
     }
     
 

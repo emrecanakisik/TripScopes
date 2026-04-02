@@ -10,7 +10,7 @@ import SnapKit
 extension UIViewController {
 
 //FEATURE PAGES
-    func CommonTitleView(title: String) {
+    func CommonTitleView(title: String) -> PageTitleView {
         let pageTitle = PageTitleView(frame: .zero, title: title)
         view.addSubview(pageTitle)
         
@@ -18,7 +18,7 @@ extension UIViewController {
             make.leading.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
+        return pageTitle
     }
-    
     
 }

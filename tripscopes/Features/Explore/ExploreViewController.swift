@@ -8,12 +8,36 @@
 import UIKit
 import SnapKit
 
-class ExploreViewController: UIViewController {
+class ExploreViewController: UIViewController, UISearchBarDelegate {
+    
+    private let mainView = ExploreView(frame: .zero)
+    private let viewModel = ExploreViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CommonTitleView(title: "TripScopes")
+        let pageTitle = CommonTitleView(title: "TripScopes")
+        view.addSubview(mainView)
+        
+        mainView.searchBar.delegate = self
+        viewModel.onSearchResultsUpdated = {[weak self] results in
+            print("Results: \(results)")
+        }
+        
+        mainView.snp.makeConstraints{make in
+            make.top.equalTo(pageTitle.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.Search(for: searchText)
+        }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+            viewModel.Search(for: searchBar.text ?? "")
+        }
     
 
     /*

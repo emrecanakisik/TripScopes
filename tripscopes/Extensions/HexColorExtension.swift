@@ -5,6 +5,61 @@ struct Colors{
     static let darkGray = "#1A1A1E"
     static let gray = "#4d4d59"
     static let lightGray = ""
+    
+    static let white = "#FFFFFF"
+    static let black = "#000000"
+    
+    // Primary
+    static let primary = "#007AFF"
+    static let primary100 = "#EDF0FF"
+    static let primary200 = "#D8E2FF"
+    static let primary300 = "#ADC6FF"
+    static let primary400 = "#80ABFF"
+    static let primary500 = "#4B8EFF"
+    static let primary600 = "#0072F0"
+    static let primary700 = "#005BC1"
+    static let primary800 = "#004493"
+    static let primary900 = "#002E69"
+    static let primary1000 = "#001A41"
+        
+    // Secondary
+    static let secondary = "#FF5A00"
+    static let secondary100 = "#FFEDE7"
+    static let secondary200 = "#FFDBCF"
+    static let secondary300 = "#FFB59A"
+    static let secondary400 = "#FF8C5F"
+    static let secondary500 = "#FD5900"
+    static let secondary600 = "#D24900"
+    static let secondary700 = "#A83900"
+    static let secondary800 = "#802900"
+    static let secondary900 = "#5B1B00"
+    static let secondary1000 = "#380D00"
+        
+    // Tertiary
+    static let tertiary = "#1D1D1F"
+    static let tertiary100 = "#F3F0F2"
+    static let tertiary200 = "#E4E2E4"
+    static let tertiary300 = "#C8C6C8"
+    static let tertiary400 = "#ACAAAD"
+    static let tertiary500 = "#929092"
+    static let tertiary600 = "#787679"
+    static let tertiary700 = "#5F5E60"
+    static let tertiary800 = "#474649"
+    static let tertiary900 = "#303032"
+    static let tertiary1000 = "#1B1B1D"
+        
+    // Neutral
+    static let neutral = "#F5F5F7"
+    static let neutral100 = "#F0F0F2"
+    static let neutral200 = "#E2E2E4"
+    static let neutral300 = "#C6C6C8"
+    static let neutral400 = "#AAABAD"
+    static let neutral500 = "#909193"
+    static let neutral600 = "#767779"
+    static let neutral700 = "#5D5E60"
+    static let neutral800 = "#454749"
+    static let neutral900 = "#2F3132"
+    static let neutral1000 = "#1A1C1D"
 }
 extension UIColor {
    convenience init(hex: String) {
