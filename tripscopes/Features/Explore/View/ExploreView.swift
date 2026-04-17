@@ -17,6 +17,9 @@ class ExploreView: UIView {
 //ELEMENTS
     let mainLabel = ExploreMainTitle(frame: .zero, labelText: "Where to next?")
     let searchBar = ExploreSearchBar(frame: .zero, placeholderText: "Search destinations, tours or hotels")
+    let bookingCards = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.flights, departureCity: "london", arrivalCity: "New York")
+    let bookingCards1 = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.hotels, checkInTime: "24 Nov", guestCount: "1")
+    let bookingCards2 = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.hotels, checkInTime: "24 Nov", guestCount: "1")
     
 //INIT
     override init(frame: CGRect) {
@@ -33,7 +36,10 @@ class ExploreView: UIView {
         backgroundColor = UIColor(hex: Colors.neutral100)
         addSubview(mainLabel)
         addSubview(searchBar)
-        
+        addSubview(bookingCards)
+        addSubview(bookingCards1)
+        addSubview(bookingCards2)
+
         mainLabel.snp.makeConstraints{make in
             make.top.leading.trailing.equalToSuperview().inset(viewPadding)
         }
@@ -42,5 +48,21 @@ class ExploreView: UIView {
             make.top.equalTo(mainLabel.snp.bottom).offset(itemSpace)
             make.leading.trailing.equalToSuperview().inset(viewPadding)
         }
+        
+        bookingCards.snp.makeConstraints{make in
+            make.top.equalTo(searchBar.snp.bottom).offset(itemSpace)
+            make.leading.trailing.equalToSuperview().inset(viewPadding)
+        }
+        
+        bookingCards1.snp.makeConstraints{make in
+            make.top.equalTo(bookingCards.snp.bottom).offset(itemSpace)
+            make.leading.trailing.equalToSuperview().inset(viewPadding)
+        }
+        
+        bookingCards2.snp.makeConstraints{make in
+            make.top.equalTo(bookingCards1.snp.bottom).offset(itemSpace)
+            make.leading.trailing.equalToSuperview().inset(viewPadding)
+        }
+        
     }
 }
