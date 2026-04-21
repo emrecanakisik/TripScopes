@@ -24,6 +24,15 @@ class ExploreViewModel {
         print("ViewModel clear search")
     }
     
-    
+    // MARK: - Booking Data
+    let flightInfo = FlightInfo(
+        departureCity: "London",
+        arrivalCity: "New York"
+    )
+
+    let hotelInfo = HotelInfo(
+        checkInDate: "24 Nov",
+        guestCount: "1"
+    )
     
 }
