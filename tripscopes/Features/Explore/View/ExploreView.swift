@@ -10,59 +10,71 @@ import UIKit
 import SnapKit
 
 class ExploreView: UIView {
-    
-    let viewPadding: CGFloat = 24
-    let itemSpace: CGFloat = 16
-    
-//ELEMENTS
+
+    //Constants
+    private let viewPadding: CGFloat = 24
+    private let itemSpacing: CGFloat = 16
+
+    //ViewModel
+    private let viewModel: ExploreViewModel
+
+    //UI Elements
     let mainLabel = ExploreMainTitle(frame: .zero, labelText: "Where to next?")
-    let searchBar = ExploreSearchBar(frame: .zero, placeholderText: "Search destinations, tours or hotels")
-    let bookingCards = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.flights, departureCity: "london", arrivalCity: "New York")
-    let bookingCards1 = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.hotels, checkInTime: "24 Nov", guestCount: "1")
-    let bookingCards2 = ExploreHotelsFlightsCardView(frame: .zero, cardType: ExploreCardType.hotels, checkInTime: "24 Nov", guestCount: "1")
-    
-//INIT
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        SetupUI()
+
+    let searchBar = ExploreSearchBar(frame: .zero,
+                                     placeholderText: "Search destinations, tours or hotels")
+
+    private lazy var collectionView: UICollectionView = {
+        let cv = UICollectionView(frame: .zero,
+                                  collectionViewLayout: createLayout())
+        cv.backgroundColor = .clear
+        cv.showsVerticalScrollIndicator = false
+
+        cv.register(BookingCardCell.self,
+                    forCellWithReuseIdentifier: BookingCardCell.reuseID)
+
+        cv.dataSource = self
+        return cv
+    }()
+
+    //Init
+    init(viewModel: ExploreViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+        setupUI()
     }
     
+    override init(frame: CGRect) {
+        self.viewModel = ExploreViewModel()
+        super.init(frame: frame)
+        setupUI()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//UI SETUP
-    private func SetupUI() {
+
+    //UISetup
+    private func setupUI() {
         backgroundColor = UIColor(hex: Colors.neutral100)
+
         addSubview(mainLabel)
         addSubview(searchBar)
-        addSubview(bookingCards)
-        addSubview(bookingCards1)
-        addSubview(bookingCards2)
+        addSubview(collectionView)
 
-        mainLabel.snp.makeConstraints{make in
+        mainLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(viewPadding)
         }
-        
-        searchBar.snp.makeConstraints{make in
-            make.top.equalTo(mainLabel.snp.bottom).offset(itemSpace)
+
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(mainLabel.snp.bottom).offset(itemSpacing)
             make.leading.trailing.equalToSuperview().inset(viewPadding)
         }
-        
-        bookingCards.snp.makeConstraints{make in
-            make.top.equalTo(searchBar.snp.bottom).offset(itemSpace)
+
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(itemSpacing)
             make.leading.trailing.equalToSuperview().inset(viewPadding)
+            make.bottom.equalToSuperview()
         }
-        
-        bookingCards1.snp.makeConstraints{make in
-            make.top.equalTo(bookingCards.snp.bottom).offset(itemSpace)
-            make.leading.trailing.equalToSuperview().inset(viewPadding)
-        }
-        
-        bookingCards2.snp.makeConstraints{make in
-            make.top.equalTo(bookingCards1.snp.bottom).offset(itemSpace)
-            make.leading.trailing.equalToSuperview().inset(viewPadding)
-        }
-        
     }
 }
