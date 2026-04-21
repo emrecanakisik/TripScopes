@@ -124,6 +124,14 @@ class ExploreHotelsFlightsCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Update Methods
+        
+    func updateFlight(departureCity: String?, arrivalCity: String?) {
+    }
+        
+    func updateHotel(checkInTime: String?, guestCount: String?) {
+    }
+    
 //UI SETUP
     private func SetupUI(){
         backgroundColor = UIColor(hex: Colors.white)
