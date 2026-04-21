@@ -50,26 +50,22 @@ class ExploreHotelsFlightsCardView: UIView {
     }()
     
     //MID
-    lazy var midIcon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "arrow.trianglehead.swap")
-        return imageView
-    }()
+    private var value1Label = UILabel()
+    private var value2Label = UILabel()
     
-    private func CreateMidLabelStack(topText: String, bottomText: String) -> UIStackView {
-        let label1 = UILabel()
-        label1.font = UIFont.systemFont(ofSize: 10, weight: .bold)
-        label1.textColor = UIColor(hex: Colors.tertiary400)
-        label1.text = topText.uppercased()
-        label1.textAlignment = .center
+    private func createMidLabelStack(topText: String, bottomText: String, valueLabel: UILabel) -> UIStackView {
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        titleLabel.textColor = UIColor(hex: Colors.tertiary400)
+        titleLabel.text = topText.uppercased()
+        titleLabel.textAlignment = .center
             
-        let label2 = UILabel()
-        label2.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        label2.textColor = UIColor(hex: Colors.tertiary800)
-        label2.text = bottomText.uppercased()
-        label2.textAlignment = .center
+        valueLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        valueLabel.textColor = UIColor(hex: Colors.tertiary800)
+        valueLabel.text = bottomText.uppercased()
+        valueLabel.textAlignment = .center
             
-        let stack = UIStackView(arrangedSubviews: [label1, label2])
+        let stack = UIStackView(arrangedSubviews: [titleLabel, valueLabel])
         stack.axis = .vertical
         stack.alignment = .leading
         return stack
@@ -127,9 +123,13 @@ class ExploreHotelsFlightsCardView: UIView {
     //Update Methods
         
     func updateFlight(departureCity: String?, arrivalCity: String?) {
+        value1Label.text = departureCity?.uppercased()
+        value2Label.text = arrivalCity?.uppercased()
     }
         
     func updateHotel(checkInTime: String?, guestCount: String?) {
+        value1Label.text = checkInTime?.uppercased()
+        value2Label.text = guestCount?.uppercased()
     }
     
 //UI SETUP
@@ -153,8 +153,8 @@ class ExploreHotelsFlightsCardView: UIView {
             typeIcon.tintColor = UIColor(hex: Colors.secondary700)
             
             //MID
-            lazy var midLabelStack1: UIStackView = CreateMidLabelStack(topText: "check-in", bottomText: checkInTime!)
-            lazy var midLabelStack2: UIStackView = CreateMidLabelStack(topText: "guests", bottomText: guestCount!)
+            let midLabelStack1 = createMidLabelStack(topText: "check-in", bottomText: checkInTime ?? "—", valueLabel: value1Label)
+            let midLabelStack2 = createMidLabelStack(topText: "guests", bottomText: guestCount ?? "—", valueLabel: value2Label)
             midStack.addArrangedSubview(midLabelStack1)
             midStack.addArrangedSubview(midLabelStack2)
             
@@ -175,8 +175,8 @@ class ExploreHotelsFlightsCardView: UIView {
             typeIcon.tintColor = UIColor(hex: Colors.primary700)
             
             //MID
-            lazy var midLabelStack1: UIStackView = CreateMidLabelStack(topText: "From", bottomText: departureCity!)
-            lazy var midLabelStack2: UIStackView = CreateMidLabelStack(topText: "To", bottomText: arrivalCity!)
+            let midLabelStack1 = createMidLabelStack(topText: "From", bottomText: departureCity ?? "—", valueLabel: value1Label)
+            let midLabelStack2 = createMidLabelStack(topText: "To", bottomText: arrivalCity ?? "—", valueLabel: value2Label)
             midStack.addArrangedSubview(midLabelStack1)
             midStack.addArrangedSubview(midLabelStack2)
             
