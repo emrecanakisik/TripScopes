@@ -13,6 +13,12 @@ class BookingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pageTitle = CommonTitleView(title: "Bookings")
+        view.addSubview(pageTitle)
+        
+        pageTitle.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+        }
     }
     
 

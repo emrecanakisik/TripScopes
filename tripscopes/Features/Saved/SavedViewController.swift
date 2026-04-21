@@ -13,6 +13,12 @@ class SavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pageTitle = CommonTitleView(title: "Saved")
+        view.addSubview(pageTitle)
+        
+        pageTitle.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
+        }
     }
     
 
