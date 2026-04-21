@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ExploreViewController: UIViewController, UISearchBarDelegate {
+class ExploreViewController: UIViewController {
 
     private let viewModel = ExploreViewModel()
     private lazy var mainView = ExploreView(viewModel: viewModel)
@@ -20,7 +20,13 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(pageTitle)
         view.addSubview(mainView)
 
-        mainView.searchBar.delegate = self
+        mainView.onSearchTextChanged = { [weak self] text in
+            self?.viewModel.Search(for: text)
+        }
+
+        mainView.onSearchSubmitted = { [weak self] text in
+            self?.viewModel.Search(for: text)
+        }
 
         viewModel.onSearchResultsUpdated = { [weak self] results in
             print("Results: \(results)")
@@ -37,12 +43,4 @@ class ExploreViewController: UIViewController, UISearchBarDelegate {
         }
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.Search(for: searchText)
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        viewModel.Search(for: searchBar.text ?? "")
-    }
 }

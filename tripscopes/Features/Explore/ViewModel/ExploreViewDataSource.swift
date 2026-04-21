@@ -13,13 +13,14 @@ let viewModel = ExploreViewModel()
 extension ExploreView: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
+        case 0: return 1  // ExploreHeaderCell (title + search bar)
+        case 1: return 1  // BookingCardCell
         default: return 0
         }
     }
@@ -27,19 +28,33 @@ extension ExploreView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ExploreHeaderCell.reuseID,
+                for: indexPath
+            ) as! ExploreHeaderCell
+            cell.onSearchTextChanged = { [weak self] text in
+                self?.onSearchTextChanged?(text)
+            }
+            cell.onSearchSubmitted = { [weak self] text in
+                self?.onSearchSubmitted?(text)
+            }
+            return cell
+
+        case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BookingCardCell.reuseID,
                 for: indexPath
             ) as! BookingCardCell
-
             cell.configure(
                 flight: viewModel.flightInfo,
                 hotel: viewModel.hotelInfo
             )
             return cell
-        }
 
-        return UICollectionViewCell()
+        default:
+            return UICollectionViewCell()
+        }
     }
 }

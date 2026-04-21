@@ -1,10 +1,3 @@
-//
-//  ExploreViewLayout.swift
-//  tripscopes
-//
-//  Created by Emre Can Akisik on 21/04/2026.
-//
-
 import Foundation
 import UIKit
 
@@ -13,12 +6,36 @@ extension ExploreView {
     func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
             switch sectionIndex {
-            case 0: return self.makeBookingSection()
+            case 0: return self.makeHeaderSection()
+            case 1: return self.makeBookingSection()
             default: return self.makeBookingSection()
             }
         }
     }
 
+    // MARK: - Header Section (ExploreMainTitle + ExploreSearchBar)
+    func makeHeaderSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(120)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(120)
+            ),
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
+        return section
+    }
+
+    // MARK: - Booking Section (BookingCardCell)
     func makeBookingSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: .init(
@@ -36,7 +53,8 @@ extension ExploreView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
         return section
     }
 }
+
