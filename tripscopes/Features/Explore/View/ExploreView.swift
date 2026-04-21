@@ -27,6 +27,8 @@ class ExploreView: UIView {
                                   collectionViewLayout: createLayout())
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
+        cv.delaysContentTouches = false
+        cv.canCancelContentTouches = false
 
         cv.register(ExploreHeaderCell.self,
                     forCellWithReuseIdentifier: ExploreHeaderCell.reuseID)
