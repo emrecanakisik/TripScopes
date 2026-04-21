@@ -14,8 +14,6 @@ class PageTitleView: UIView {
 //ELEMENTS
     lazy var labelView: UIView = {
        let view = UIView()
-        view.layer.borderWidth = 5
-        view.layer.borderColor = UIColor.red.cgColor
         return view
     }()
     
