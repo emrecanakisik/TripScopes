@@ -13,7 +13,7 @@ let viewModel = ExploreViewModel()
 extension ExploreView: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -21,6 +21,7 @@ extension ExploreView: UICollectionViewDataSource {
         switch section {
         case 0: return 1  // ExploreHeaderCell (title + search bar)
         case 1: return 1  // BookingCardCell
+        case 2: return 1  // AISuggestionsCell
         default: return 0
         }
     }
@@ -51,6 +52,13 @@ extension ExploreView: UICollectionViewDataSource {
                 flight: viewModel.flightInfo,
                 hotel: viewModel.hotelInfo
             )
+            return cell
+
+        case 2:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ExploreAITripSuggestionsCell.reuseID,
+                for: indexPath
+            ) as! ExploreAITripSuggestionsCell
             return cell
 
         default:

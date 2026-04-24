@@ -8,6 +8,7 @@ extension ExploreView {
             switch sectionIndex {
             case 0: return self.makeHeaderSection()
             case 1: return self.makeBookingSection()
+            case 2: return self.makeAISuggestionsSection()
             default: return self.makeBookingSection()
             }
         }
@@ -53,7 +54,29 @@ extension ExploreView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
+        return section
+    }
+    
+    // MARK: - AI Suggestions Section (AISuggestionsCell)
+    func makeAISuggestionsSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(300)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(300)
+            ),
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
         return section
     }
 }
