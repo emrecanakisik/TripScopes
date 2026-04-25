@@ -37,6 +37,8 @@ class ExploreAISuggestionsCell: UICollectionViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
         return button
     }()
+
+    private lazy var aiSuggestionCardsView = AISuggestionCardsView()
     
 // INIT
     override init(frame: CGRect) {
@@ -53,23 +55,29 @@ class ExploreAISuggestionsCell: UICollectionViewCell {
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(viewAllButton)
+        contentView.addSubview(aiSuggestionCardsView)
         
         iconImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().inset(16)
             make.width.height.equalTo(24)
-            make.top.bottom.equalToSuperview().inset(16)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(iconImageView.snp.trailing).offset(8)
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(iconImageView)
         }
         
         viewAllButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.centerY.equalTo(iconImageView)
             make.leading.greaterThanOrEqualTo(titleLabel.snp.trailing).offset(8)
+        }
+        
+        aiSuggestionCardsView.snp.makeConstraints { make in
+            make.top.equalTo(iconImageView.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(16)
         }
     }
     

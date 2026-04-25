@@ -56,9 +56,9 @@ extension ExploreView: UICollectionViewDataSource {
 
         case 2:
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ExploreAITripSuggestionsCell.reuseID,
+                withReuseIdentifier: ExploreAISuggestionsCell.reuseID,
                 for: indexPath
-            ) as! ExploreAITripSuggestionsCell
+            ) as! ExploreAISuggestionsCell
             return cell
 
         default:
