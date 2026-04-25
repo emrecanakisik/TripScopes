@@ -34,6 +34,8 @@ class ExploreView: UIView {
                     forCellWithReuseIdentifier: BookingCardCell.reuseID)
         cv.register(ExploreAISuggestionsCell.self,
                     forCellWithReuseIdentifier: ExploreAISuggestionsCell.reuseID)
+        cv.register(ExploreCategoriesRowCell.self,
+                    forCellWithReuseIdentifier: ExploreCategoriesRowCell.reuseID)
 
         cv.dataSource = self
         return cv
