@@ -18,7 +18,7 @@ extension BookingsView: UICollectionViewDataSource {
                         numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0: return 1  // BookingsTabsCell
-        case 1: return 0  // UpcomingFlightsCell
+        case 1: return 1  // FlightsCell
         case 2: return 0  // AccommodationCell
         case 3: return 0  // ConciergeBannerCell
         case 4: return 0  // UpgradeBannerCell
@@ -32,6 +32,12 @@ extension BookingsView: UICollectionViewDataSource {
         case 0:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BookingsTabsCell.reuseID,
+                for: indexPath
+            )
+            return cell
+        case 1:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BookingsFlightsCell.reuseID,
                 for: indexPath
             )
             return cell

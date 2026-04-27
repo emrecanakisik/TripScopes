@@ -25,6 +25,7 @@ class BookingsView: UIView {
         cv.showsVerticalScrollIndicator = false
 
         cv.register(BookingsTabsCell.self, forCellWithReuseIdentifier: BookingsTabsCell.reuseID)
+        cv.register(BookingsFlightsCell.self, forCellWithReuseIdentifier: BookingsFlightsCell.reuseID)
 
         cv.dataSource = self
         return cv

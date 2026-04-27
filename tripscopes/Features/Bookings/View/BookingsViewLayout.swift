@@ -14,7 +14,7 @@ extension BookingsView {
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
             switch sectionIndex {
             case 0: return self.makeTabsSection()
-            case 1: return self.makeUpcomingFlightsSection()
+            case 1: return self.makeBookingsFlightsCell()
             case 2: return self.makeAccommodationSection()
             case 3: return self.makeConciergeBannerSection()
             case 4: return self.makeUpgradeBannerSection()
@@ -45,8 +45,8 @@ extension BookingsView {
         return section
     }
 
-    // MARK: - Upcoming Flights Section
-    func makeUpcomingFlightsSection() -> NSCollectionLayoutSection {
+    // MARK: - Flights Section
+    func makeBookingsFlightsCell() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1.0),
