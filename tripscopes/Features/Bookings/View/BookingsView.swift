@@ -24,6 +24,8 @@ class BookingsView: UIView {
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
 
+        cv.register(BookingsTabsCell.self, forCellWithReuseIdentifier: BookingsTabsCell.reuseID)
+
         cv.dataSource = self
         return cv
     }()
