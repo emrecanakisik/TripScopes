@@ -1,5 +1,5 @@
 //
-//  BookingsFlightsHeaderView.swift
+//  BookingsSectionHeaderView.swift
 //  tripscopes
 //
 //  Created by Emre Can Akisik on 27/04/2026.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class BookingsFlightsHeaderView: UIView {
+class BookingsSectionHeaderView: UIView {
 
 //ELEMENTS
     private lazy var titleLabel: UILabel = {
@@ -28,8 +28,10 @@ class BookingsFlightsHeaderView: UIView {
     }()
 
 //INIT
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(title: String, count: String) {
+        super.init(frame: .zero)
+        titleLabel.text = title
+        countLabel.text = count
         setupUI()
     }
 
@@ -39,9 +41,6 @@ class BookingsFlightsHeaderView: UIView {
 
 //UI SETUP
     private func setupUI() {
-        titleLabel.text = "Upcoming Flights"
-        countLabel.text = "2 BOOKINGS"
-
         addSubview(titleLabel)
         addSubview(countLabel)
 

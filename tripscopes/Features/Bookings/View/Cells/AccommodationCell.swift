@@ -23,7 +23,7 @@ class AccommodationCell: UICollectionViewCell {
         return stack
     }()
 
-    private lazy var headerView = BookingsAccommodationHeaderView()
+    private lazy var headerView = BookingsSectionHeaderView(title: "Accommodation", count: "1 BOOKING")
     private lazy var card = BookingHotelCardView()
 
 //INIT
