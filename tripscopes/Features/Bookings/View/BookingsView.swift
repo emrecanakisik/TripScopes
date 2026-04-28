@@ -26,6 +26,7 @@ class BookingsView: UIView {
 
         cv.register(BookingsTabsCell.self, forCellWithReuseIdentifier: BookingsTabsCell.reuseID)
         cv.register(BookingsFlightsCell.self, forCellWithReuseIdentifier: BookingsFlightsCell.reuseID)
+        cv.register(AccommodationCell.self, forCellWithReuseIdentifier: AccommodationCell.reuseID)
 
         cv.dataSource = self
         return cv

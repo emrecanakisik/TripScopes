@@ -19,7 +19,7 @@ extension BookingsView: UICollectionViewDataSource {
         switch section {
         case 0: return 1  // BookingsTabsCell
         case 1: return 1  // FlightsCell
-        case 2: return 0  // AccommodationCell
+        case 2: return 1  // AccommodationCell
         case 3: return 0  // ConciergeBannerCell
         case 4: return 0  // UpgradeBannerCell
         default: return 0
@@ -38,6 +38,12 @@ extension BookingsView: UICollectionViewDataSource {
         case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BookingsFlightsCell.reuseID,
+                for: indexPath
+            )
+            return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: AccommodationCell.reuseID,
                 for: indexPath
             )
             return cell
