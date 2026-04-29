@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 class SavedViewController: UIViewController {
+    
+    private let viewModel = SavedViewModel()
+    private lazy var mainView = SavedView(viewModel: viewModel)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,17 +22,11 @@ class SavedViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
+        
+        mainView.snp.makeConstraints { make in
+            make.top.equalTo(pageTitle.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
