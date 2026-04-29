@@ -20,8 +20,8 @@ extension BookingsView: UICollectionViewDataSource {
         case 0: return 1  // BookingsTabsCell
         case 1: return 1  // FlightsCell
         case 2: return 1  // AccommodationCell
-        case 3: return 0  // ConciergeBannerCell
-        case 4: return 0  // UpgradeBannerCell
+        case 3: return 1  // BookingBannerCell (.concierge)
+        case 4: return 1  // BookingBannerCell (.upgrade)
         default: return 0
         }
     }
@@ -46,6 +46,20 @@ extension BookingsView: UICollectionViewDataSource {
                 withReuseIdentifier: AccommodationCell.reuseID,
                 for: indexPath
             )
+            return cell
+        case 3:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BookingBannerCell.reuseID,
+                for: indexPath
+            ) as! BookingBannerCell
+            cell.configure(with: .concierge)
+            return cell
+        case 4:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BookingBannerCell.reuseID,
+                for: indexPath
+            ) as! BookingBannerCell
+            cell.configure(with: .upgrade)
             return cell
         default:
             return UICollectionViewCell()
