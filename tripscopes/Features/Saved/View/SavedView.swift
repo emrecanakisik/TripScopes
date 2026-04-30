@@ -24,6 +24,8 @@ class SavedView: UIView {
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
 
+        cv.register(SavedFilterTabsCell.self, forCellWithReuseIdentifier: SavedFilterTabsCell.reuseID)
+
         cv.dataSource = self
         return cv
     }()

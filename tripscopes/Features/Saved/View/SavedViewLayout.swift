@@ -24,7 +24,24 @@ extension SavedView {
 
     // MARK: - Filter Tabs Section
     func makeFilterTabsSection() -> NSCollectionLayoutSection {
-        return makePlaceholderSection(estimatedHeight: 56)
+        let item = NSCollectionLayoutItem(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(40)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(40)
+            ),
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
+        return section
     }
 
     // MARK: - Dream Stays Section

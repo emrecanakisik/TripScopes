@@ -17,7 +17,7 @@ extension SavedView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0: return 0  // SavedFilterTabsCell
+        case 0: return 1  // SavedFilterTabsCell
         case 1: return 0  // DreamStaysCell
         case 2: return 0  // TrackedFlightsCell
         case 3: return 0  // CuratedListsCell
@@ -27,6 +27,15 @@ extension SavedView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        switch indexPath.section {
+        case 0:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SavedFilterTabsCell.reuseID,
+                for: indexPath
+            )
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
     }
 }
