@@ -17,6 +17,7 @@ class SavedViewController: UIViewController {
         super.viewDidLoad()
         let pageTitle = CommonTitleView(title: "Saved")
         view.addSubview(pageTitle)
+        view.addSubview(mainView)
         
         pageTitle.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
