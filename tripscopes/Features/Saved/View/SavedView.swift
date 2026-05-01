@@ -27,6 +27,7 @@ class SavedView: UIView {
         cv.register(SavedFilterTabsCell.self, forCellWithReuseIdentifier: SavedFilterTabsCell.reuseID)
         cv.register(DreamStaysCell.self, forCellWithReuseIdentifier: DreamStaysCell.reuseID)
         cv.register(TrackedFlightsCell.self, forCellWithReuseIdentifier: TrackedFlightsCell.reuseID)
+        cv.register(CuratedListsCell.self, forCellWithReuseIdentifier: CuratedListsCell.reuseID)
 
         cv.dataSource = self
         return cv
