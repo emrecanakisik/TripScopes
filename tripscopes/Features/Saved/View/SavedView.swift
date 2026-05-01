@@ -25,6 +25,7 @@ class SavedView: UIView {
         cv.showsVerticalScrollIndicator = false
 
         cv.register(SavedFilterTabsCell.self, forCellWithReuseIdentifier: SavedFilterTabsCell.reuseID)
+        cv.register(DreamStaysCell.self, forCellWithReuseIdentifier: DreamStaysCell.reuseID)
 
         cv.dataSource = self
         return cv

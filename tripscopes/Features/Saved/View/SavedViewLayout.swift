@@ -46,7 +46,7 @@ extension SavedView {
 
     // MARK: - Dream Stays Section
     func makeDreamStaysSection() -> NSCollectionLayoutSection {
-        return makePlaceholderSection(estimatedHeight: 280)
+        return makePlaceholderSection(estimatedHeight: 360)
     }
 
     // MARK: - Tracked Flights Section
