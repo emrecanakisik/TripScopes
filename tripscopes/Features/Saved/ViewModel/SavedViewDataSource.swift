@@ -19,7 +19,7 @@ extension SavedView: UICollectionViewDataSource {
         switch section {
         case 0: return 1  // SavedFilterTabsCell
         case 1: return 1  // DreamStaysCell
-        case 2: return 0  // TrackedFlightsCell
+        case 2: return 1  // TrackedFlightsCell
         case 3: return 0  // CuratedListsCell
         default: return 0
         }
@@ -37,6 +37,12 @@ extension SavedView: UICollectionViewDataSource {
         case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: DreamStaysCell.reuseID,
+                for: indexPath
+            )
+            return cell
+        case 2:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: TrackedFlightsCell.reuseID,
                 for: indexPath
             )
             return cell
