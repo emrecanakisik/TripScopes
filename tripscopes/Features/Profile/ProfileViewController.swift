@@ -6,24 +6,22 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileViewController: UIViewController {
+    
+    private let viewModel = ProfileViewModel()
+    private lazy var mainView = ProfileView(viewModel: viewModel)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(mainView)
+        
+        mainView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
 
-        // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
