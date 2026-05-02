@@ -24,6 +24,7 @@ class ProfileView: UIView {
         cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
 
+        cv.register(ProfileHeaderCell.self, forCellWithReuseIdentifier: ProfileHeaderCell.reuseID)
         cv.register(ProfilePlaceholderCell.self, forCellWithReuseIdentifier: ProfilePlaceholderCell.reuseID)
 
         cv.dataSource = self

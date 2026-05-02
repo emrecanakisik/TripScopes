@@ -27,7 +27,7 @@ extension ProfileView: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             return collectionView.dequeueReusableCell(
-                withReuseIdentifier: ProfilePlaceholderCell.reuseID,
+                withReuseIdentifier: ProfileHeaderCell.reuseID,
                 for: indexPath
             )
         default:
