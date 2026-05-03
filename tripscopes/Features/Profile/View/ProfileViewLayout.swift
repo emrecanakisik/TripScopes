@@ -18,6 +18,7 @@ extension ProfileView {
             case 2: return self.makeMembershipSection()
             case 3: return self.makeQuickAccessSection()
             case 4: return self.makeGetHelpSection()
+            case 5: return self.makeSignOutSection()
             default: return self.makePlaceholderSection()
             }
         }
@@ -130,6 +131,28 @@ extension ProfileView {
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
+        return section
+    }
+
+    // MARK: - Sign Out Section
+    func makeSignOutSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(72)
+            )
+        )
+
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: .init(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .estimated(72)
+            ),
+            subitems: [item]
+        )
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 24, bottom: 32, trailing: 24)
         return section
     }
 
