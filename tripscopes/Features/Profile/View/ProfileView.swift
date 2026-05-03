@@ -26,6 +26,7 @@ class ProfileView: UIView {
 
         cv.register(ProfileHeaderCell.self, forCellWithReuseIdentifier: ProfileHeaderCell.reuseID)
         cv.register(ProfileStatsCell.self, forCellWithReuseIdentifier: ProfileStatsCell.reuseID)
+        cv.register(ProfileMembershipCell.self, forCellWithReuseIdentifier: ProfileMembershipCell.reuseID)
         cv.register(ProfilePlaceholderCell.self, forCellWithReuseIdentifier: ProfilePlaceholderCell.reuseID)
 
         cv.dataSource = self
