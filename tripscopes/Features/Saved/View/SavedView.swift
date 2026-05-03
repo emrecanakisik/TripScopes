@@ -57,7 +57,7 @@ class SavedView: UIView {
         addSubview(collectionView)
 
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(viewPadding)
         }
     }
 }

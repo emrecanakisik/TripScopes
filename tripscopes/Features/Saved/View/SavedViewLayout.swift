@@ -77,7 +77,7 @@ extension SavedView {
         )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 24, bottom: 16, trailing: 24)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 16, trailing: 0)
         return section
     }
 }
