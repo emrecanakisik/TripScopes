@@ -12,15 +12,14 @@ import SnapKit
 class ProfileMenuCardView: UIView {
 
     private let cardPadding: CGFloat = 20
-    private let titleToRowsSpacing: CGFloat = 20
-    private let rowSpacing: CGFloat = 16
+    private let titleToRowsSpacing: CGFloat = 8
+    private let rowSpacing: CGFloat = 0
 
 //ELEMENTS
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = UIColor(hex: Colors.tertiary)
-        label.text = "Quick Access"
         return label
     }()
 
@@ -55,12 +54,6 @@ class ProfileMenuCardView: UIView {
         layer.cornerRadius = 32
         clipsToBounds = true
 
-        let savedRow = makeRow(iconName: "bookmark.fill", title: "Saved places", trailingText: nil)
-        let bookingsRow = makeRow(iconName: "calendar.badge.clock", title: "Upcoming bookings", trailingText: "2")
-        let paymentsRow = makeRow(iconName: "creditcard.fill", title: "Payments", trailingText: nil)
-
-        [savedRow, bookingsRow, paymentsRow].forEach { rowsStack.addArrangedSubview($0) }
-
         addSubview(titleLabel)
         addSubview(rowsStack)
 
@@ -73,6 +66,18 @@ class ProfileMenuCardView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(titleToRowsSpacing)
             make.leading.trailing.equalToSuperview().inset(cardPadding)
             make.bottom.equalToSuperview().inset(cardPadding)
+        }
+    }
+
+    func configure(title: String, rows: [(iconName: String, title: String, trailingText: String?)]) {
+        titleLabel.text = title
+        rowsStack.arrangedSubviews.forEach { view in
+            rowsStack.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+        for (_, spec) in rows.enumerated() {
+            let row = makeRow(iconName: spec.iconName, title: spec.title, trailingText: spec.trailingText)
+            rowsStack.addArrangedSubview(row)
         }
     }
 }

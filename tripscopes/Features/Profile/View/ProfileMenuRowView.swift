@@ -11,18 +11,8 @@ import SnapKit
 
 class ProfileMenuRowView: UIView {
 
-    private let iconCircleSize: CGFloat = 44
-    private let iconSymbolSize: CGFloat = 18
-    private let verticalInset: CGFloat = 12
-
-//ELEMENTS
-    private lazy var iconBackdrop: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(hex: Colors.primary100)
-        view.layer.cornerRadius = iconCircleSize / 2
-        view.clipsToBounds = true
-        return view
-    }()
+    private let iconSymbolSize: CGFloat = 22
+    private let verticalInset: CGFloat = 14
 
     private lazy var iconView: UIImageView = {
         let imageView = UIImageView()
@@ -32,7 +22,7 @@ class ProfileMenuRowView: UIView {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = UIColor(hex: Colors.tertiary)
         label.numberOfLines = 2
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -79,10 +69,10 @@ class ProfileMenuRowView: UIView {
     }()
 
     private lazy var rowStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [iconBackdrop, textTrailingStack])
+        let stack = UIStackView(arrangedSubviews: [iconView, textTrailingStack])
         stack.axis = .horizontal
         stack.alignment = .center
-        stack.spacing = 12
+        stack.spacing = 16
         return stack
     }()
 
@@ -98,14 +88,7 @@ class ProfileMenuRowView: UIView {
 
 //UI SETUP
     private func setupUI() {
-        iconBackdrop.addSubview(iconView)
-
-        iconBackdrop.snp.makeConstraints { make in
-            make.width.height.equalTo(iconCircleSize)
-        }
-
         iconView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
             make.width.height.equalTo(iconSymbolSize + 4)
         }
 

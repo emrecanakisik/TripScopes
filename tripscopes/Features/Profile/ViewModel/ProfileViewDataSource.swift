@@ -11,13 +11,13 @@ import UIKit
 extension ProfileView: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        4
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0, 1, 2: return 1
+        case 0, 1, 2, 3: return 1
         default: return 0
         }
     }
@@ -38,6 +38,11 @@ extension ProfileView: UICollectionViewDataSource {
         case 2:
             return collectionView.dequeueReusableCell(
                 withReuseIdentifier: ProfileMembershipCell.reuseID,
+                for: indexPath
+            )
+        case 3:
+            return collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfileQuickAccessCell.reuseID,
                 for: indexPath
             )
         default:
